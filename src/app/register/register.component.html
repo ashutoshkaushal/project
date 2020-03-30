@@ -1,0 +1,82 @@
+<app-header id="appheader"></app-header>
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Register</h4>
+	<p class="text-center">Get started with your free account</p>
+	
+	<form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="fullname" formControlName="fullname" class="form-control" 
+		[ngClass]="{'is-invalid': submitted && fval.fullname.errors }"
+		placeholder="Full name" type="text"/>
+		<div *ngIf="submitted && fval.fullname.errors" class="invalid-feedback">
+		<div *ngIf="fval.firstName.errors.required">Full Name Name is required</div>
+		</div>
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="" class="form-control" formControlName="email"
+		 [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+		placeholder="Email address" type="email"/>
+		<div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+<div *ngIf="fval.email.errors.required">Email is required</div>
+<div *ngIf="fval.email.errors.email">Enter valid email address</div>
+</div>
+	</div>
+     <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>		
+    	<input name="" class="form-control" formControlName="phone"
+		[ngClass]="{ 'is-invalid': submitted && fval.phone.errors }"
+		maxlength="10" placeholder="Phone number" type="text" />
+		<div *ngIf="submitted && fval.phone.errors" class="invalid-feedback">
+	<div *ngIf="fval.phone.errors.required">Phone is required</div>
+	</div>
+	</div>
+    <!-- form-group// -->
+   
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control"
+		[ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+		formControlName="password" placeholder="Create password" type="password"/>
+		<div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+<div *ngIf="fval.password.errors.required">Password is required</div>
+<div *ngIf="fval.password.errors.minlength">Password must be at least 6 characters</div>
+</div>
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control"  formControlName="confirmPassword" placeholder="Repeat password" type="password" 
+		[ngClass]="{ 'is-invalid': submitted && fval.confirmPassword.errors }"
+		/>
+		<div *ngIf="submitted && fval.confirmPassword.errors" class="invalid-feedback">
+<div *ngIf="fval.confirmPassword.errors.required">Confirm Password is required</div>
+<div *ngIf="fval.confirmPassword.errors.mustMatch">Passwords must match</div>
+</div>
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button [disabled]="loading" type="submit" class="btn btn-primary btn-block">
+			<span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+			Create Account  </button>
+    </div> <!-- form-group// -->      
+    <p class="text-center">Have an account? <a href="login">Log In</a> </p>                                                                 
+</form>
+</article>
+</div> <!-- card.// -->
+<app-footer ></app-footer>
+
+<!--container end.//-->

@@ -1,0 +1,38 @@
+
+<app-header id="appheader"></app-header>
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Login</h4>
+	<p class="text-center">Log In you account</p>
+	
+	
+
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="" class="form-control"  [(ngModel)]="uname" placeholder="Email" type="text">
+		</div> <!-- form-group// -->
+      
+   
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" [(ngModel)]="pass" placeholder="password" type="password">
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button type="submit" (click)="check()" class="btn btn-primary btn-block"> Login </button>
+    </div> <!-- form-group// -->  
+    <h1 *ngIf="msgg">
+	{{msgg.msg}}
+	</h1>
+    <p class="text-center">Create an account <a href="register">Register</a> </p>                                                                 
+
+</article>
+</div> <!-- card.// -->
+<app-footer id="appfooter"></app-footer>
+
+<!--container end.//-->

@@ -1,0 +1,115 @@
+-- phpMyAdmin SQL Dump
+-- version 3.1.3.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 26, 2020 at 05:54 AM
+-- Server version: 5.1.33
+-- PHP Version: 5.2.9-2
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `shoppingdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `CategoryId` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(500) NOT NULL,
+  PRIMARY KEY (`CategoryId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`CategoryId`, `Name`) VALUES
+(1, 'Clothes'),
+(2, 'Shoes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productcart`
+--
+
+CREATE TABLE IF NOT EXISTS `productcart` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `CreatedDate` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `productcart`
+--
+
+INSERT INTO `productcart` (`Id`, `ProductID`, `quantity`, `CreatedDate`) VALUES
+(30, 3, 1, '20-02-2020'),
+(31, 1, 1, '20-02-2020'),
+(29, 5, 1, '20-02-2020'),
+(33, 6, 1, '20-02-2020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(500) NOT NULL,
+  `Description` varchar(500) NOT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `ImgName` varchar(100) NOT NULL,
+  `Createddate` varchar(50) NOT NULL,
+  `CategoryId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`Id`, `Name`, `Description`, `Price`, `ImgName`, `Createddate`, `CategoryId`) VALUES
+(1, 'White Shirt', 'White Shirt new design', '560.12', '15_21_45.jpeg', '18-02-2020', 1),
+(3, 'Blue', 'asdasdasd asdadsasd', '345.00', '9_58_31.jpeg', '18-02-2020', 1),
+(5, '1sanjayy', 'zxZXzXXZZ', '1312.00', '15_21_25.jpeg', '18-02-2020', 1),
+(6, '2New design', 'New design', '560.00', '10_24_19.jpeg', '18-02-2020', 1),
+(7, 'RAvi Ravi', 'safadadad', '5670.00', '17_21_48.jpeg', '17-02-2020', 1),
+(8, 'GRITSTONES Men  Cotton Full Sleeves Chinese Collar Shirt', 'GRITSTONES Men  Cotton Full Sleeves Chinese Collar Shirt.', '670.00', '9_22_32.jpeg', '18-02-2020', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `FullName` varchar(500) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `PhoneNumber` varchar(500) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Role` varchar(100) NOT NULL,
+  `isDelete` bit(2) NOT NULL,
+  `createddate` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Id`, `FullName`, `Email`, `PhoneNumber`, `Password`, `Role`, `isDelete`, `createddate`) VALUES
+(1, 'Ajay', 'ajay@gmail.com', '9815672598', '123456', 'admin', b'00', '2020-02-11 10:01:12'),
+(2, 'ravi', 'ravi@gmail.com', '9876654433', '123456', 'user', b'00', '11-Feb-2020'),
+(3, 'Ravi riavi', 'ravi@gmail.com', '345677888', '123456789', 'user', b'00', '11-Feb-2020'),
+(4, 'steave', 'strav@gmail.com', '9888888888', '12345678', 'user', b'00', '11-Feb-2020');
